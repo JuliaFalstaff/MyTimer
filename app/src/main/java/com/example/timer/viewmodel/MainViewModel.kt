@@ -22,7 +22,7 @@ class MainViewModel() : ViewModel() {
         }
     }
 
-    private val stopwatchListOrchestrator = StopWatchOrchestrator(
+    private val stopwatchListOrchestratorFirst = StopWatchOrchestrator(
             StopwatchStateHolder(
                     StopwatchStateCalculator(
                             timestampProvider,
@@ -34,17 +34,17 @@ class MainViewModel() : ViewModel() {
             viewModelScope
     )
 
-    val liveData: LiveData<String> = stopwatchListOrchestrator.ticker.asLiveData()
+    val liveData: LiveData<String> = stopwatchListOrchestratorFirst.ticker.asLiveData()
 
     fun pause() {
-        stopwatchListOrchestrator.pause()
+        stopwatchListOrchestratorFirst.pause()
     }
 
     fun start() {
-        stopwatchListOrchestrator.start()
+        stopwatchListOrchestratorFirst.start()
     }
 
     fun stop() {
-        stopwatchListOrchestrator.stop()
+        stopwatchListOrchestratorFirst.stop()
     }
 }
